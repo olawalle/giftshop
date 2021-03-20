@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Rubik:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <nav>
+        <div class="logo"></div>
+        <ul class="links">
+          <li class="link">Home</li>
+          <li class="link">Gifts</li>
+          <li class="link">Gift cards</li>
+        </ul>
+      </nav>
+
+      <div class="hero">
+        <div class="overlay">
+          <h1>Welcome to possibilities</h1>
+          <p>
+            Give your loved ones the beautiful memories they deserved. wrapped
+            up and delivered like they dreamt it would arrive
+          </p>
+        </div>
+      </div>
+
+      <section>
+        <p class="section-title">Our services</p>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <a href="./giftcards.html">
+              <div class="my-card">
+                <div
+                  class="image"
+                  style="background-image: url('./assets/gift2.jpg')"
+                ></div>
+                <div class="texts">
+                  <p class="top-title">
+                    Select from our range of thoughtful gift items
+                  </p>
+                  <button>Explore</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="my-card">
+              <div
+                class="image"
+                style="background-image: url('./assets/cards.jpg')"
+              ></div>
+              <div class="texts">
+                <p class="top-title">
+                  Gift your loved ones one of these amazing gift cards
+                </p>
+                <button>Explore</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured">
+        <p class="section-title">Featured Items</p>
+
+        <div class="row">
+          <div class="col-md-4 col-sm-12" v-for="item in items" :key="item">
+            <div class="featured-item">
+              <div class="item-image"></div>
+              <p class="name">A nice gift <span>$20.00</span></p>
+              <p class="info">Its a simple item</p>
+              <button>Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer></footer>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
