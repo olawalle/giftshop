@@ -3,7 +3,67 @@ var app = new Vue({
   data: {
     message: "Hello Vue!",
     items: [1, 2, 3],
+    toggle: false,
+    newCardDetails: {
+      receiverEmail: "olawalle94@gmail.com",
+      receiverName: "Sam smith",
+      senderEmail: "olawalle94@gmail.com",
+      senderName: "olawale ariyo",
+      amount: "2000",
+      cardCurrency: "NGN",
+      callbackUrl: "",
+    },
   },
   computed: {},
-  methods: {},
+  methods: {
+    pickCardType(e) {
+      console.log(e);
+    },
+    createCard() {
+      let data = {
+        ...this.newCardDetails,
+        callbackUrl: `${window.location}`,
+        // receiverEmail: "olawalle94@gmail.com",
+      };
+      console.log(data);
+      axios({
+        method: "post",
+        url:
+          "https://api.giftshop.africa/v1/customer/giftcards/giftcard/create",
+        data,
+      })
+        .then((res) => {
+          console.log(res);
+          this.getCardInfo(res.data.data.cardReference);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    getCardInfo(ref) {
+      axios({
+        method: "get",
+        url: `https://api.giftshop.africa/v1/customer/giftcards/giftcard/view/${ref}`,
+      })
+        .then((res) => {
+          console.log(res);
+          window.open(res.data.data.paymentUrl, "_self");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 });
+
+// cardReference=0s7pwnbz2&cardCode=2915129026100373&cardPin=489004&senderEmail=olawalle94@gmail.com
+
+// To remove the .html extension from your urls, you can use the following code in root/htaccess :
+
+// RewriteEngine on
+
+// RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+// RewriteRule ^ /%1 [NC,L,R]
+
+// RewriteCond %{REQUEST_FILENAME}.html -f
+// RewriteRule ^ %{REQUEST_URI}.html [NC,L]

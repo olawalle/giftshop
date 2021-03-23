@@ -7,11 +7,12 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lobster&family=Rubik:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
     <link
@@ -21,16 +22,39 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
   </head>
   <body>
     <div id="app">
       <nav>
         <div class="logo"></div>
-        <ul class="links">
-          <li class="link">Home</li>
+
+        <div
+          @click="toggle = !toggle"
+          id="nav-icon1"
+          :class="toggle ? 'open' : ''"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <ul :class="toggle ? 'open links' : 'links'">
+          <li class="link">
+            <a href="./index.html">Home</a>
+          </li>
           <li class="link">Gifts</li>
-          <li class="link">Gift cards</li>
+          <li class="link">
+            <a href="./giftcards.html"> Gift cards</a>
+          </li>
+          <li class="link">
+            <a href="./redeem.html"> Redeem giftcard</a>
+          </li>
         </ul>
       </nav>
       <div class="hero">
@@ -47,230 +71,99 @@
               class="giftcard"
               data-toggle="modal"
               data-target="#exampleModalCenter"
+              @click="pickCardType('lol')"
             >
               <img
                 src="./assets/old-apple-store-gift-cards-landing-202006.png"
                 alt=""
               />
               <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img src="./assets/41cx6yN++7L._AC_SX184_.jpg" alt="" />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img src="./assets/download.png" alt="" />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img
-                src="./assets/old-apple-store-gift-cards-landing-202006.png"
-                alt=""
-              />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img
-                src="./assets/old-apple-store-gift-cards-landing-202006.png"
-                alt=""
-              />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img src="./assets/41cx6yN++7L._AC_SX184_.jpg" alt="" />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img src="./assets/download.png" alt="" />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img
-                src="./assets/old-apple-store-gift-cards-landing-202006.png"
-                alt=""
-              />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img
-                src="./assets/old-apple-store-gift-cards-landing-202006.png"
-                alt=""
-              />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img src="./assets/41cx6yN++7L._AC_SX184_.jpg" alt="" />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img src="./assets/download.png" alt="" />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img
-                src="./assets/old-apple-store-gift-cards-landing-202006.png"
-                alt=""
-              />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img
-                src="./assets/old-apple-store-gift-cards-landing-202006.png"
-                alt=""
-              />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img src="./assets/41cx6yN++7L._AC_SX184_.jpg" alt="" />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img src="./assets/download.png" alt="" />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img
-                src="./assets/old-apple-store-gift-cards-landing-202006.png"
-                alt=""
-              />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img
-                src="./assets/old-apple-store-gift-cards-landing-202006.png"
-                alt=""
-              />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img src="./assets/41cx6yN++7L._AC_SX184_.jpg" alt="" />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img src="./assets/download.png" alt="" />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="giftcard">
-              <img
-                src="./assets/old-apple-store-gift-cards-landing-202006.png"
-                alt=""
-              />
-              <div class="info">
-                <p class="name">Itunes giftcards</p>
+                <p class="name">Giftshop cards</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
 
-    <div
-      class="modal fade"
-      id="exampleModalCenter"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">...</div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+      <div
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body" style="padding: 30px">
+              <p class="thick">Create card</p>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label mb-0"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  id="exampleFormControlInput1"
+                  placeholder=""
+                  v-model="newCardDetails.senderName"
+                />
+
+                <label for="exampleFormControlInput1" class="form-label mb-0"
+                  >Email address</label
+                >
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  id="exampleFormControlInput1"
+                  placeholder=""
+                  v-model="newCardDetails.senderEmail"
+                />
+
+                <label for="exampleFormControlInput1" class="form-label mb-0"
+                  >Receiver's name</label
+                >
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  id="exampleFormControlInput1"
+                  placeholder=""
+                  v-model="newCardDetails.receiverName"
+                />
+
+                <label for="exampleFormControlInput1" class="form-label mb-0"
+                  >Amount</label
+                >
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  id="exampleFormControlInput1"
+                  placeholder=""
+                  v-model="newCardDetails.amount"
+                />
+
+                <label for="exampleFormControlInput1" class="form-label mb-0"
+                  >Currency</label
+                >
+                <select
+                  class="form-control form-select"
+                  aria-label="Default select example"
+                  v-model="newCardDetails.cardCurrency"
+                >
+                  <option selected>Open this select menu</option>
+                  <option value="NGN">NGN</option>
+                  <option value="USD">USD</option>
+                </select>
+              </div>
+            </div>
+            <div class="" style="text-align: right; padding: 0 30px 30px">
+              <button type="button" class="btn btn-Light" data-dismiss="modal">
+                Close
+              </button>
+              <button type="button" class="btn btn-dark" @click="createCard()">
+                Proceed
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -291,5 +184,7 @@
       integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
       crossorigin="anonymous"
     ></script>
+
+    <script src="./main.js"></script>
   </body>
 </html>
