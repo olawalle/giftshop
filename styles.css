@@ -39,6 +39,14 @@ ul li {
   color: #15001f;
 }
 
+ul li a {
+  color: #15001f;
+}
+
+#nav-icon1 {
+  display: none;
+}
+
 .hero {
   height: 400px;
   background-image: url("./assets/banner.jpg");
@@ -292,6 +300,7 @@ label {
   ul.open li {
     display: block;
     margin-bottom: 20px;
+    color: #fff;
   }
   ul.open li a {
     color: #fff;
@@ -308,27 +317,28 @@ label {
     width: 90%;
     margin-left: 5%;
   }
+
+  #nav-icon1 {
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    display: inline-block;
+  }
 }
 
 /* icon */
-
-#nav-icon1 {
-  width: 40px;
-  height: 30px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-  cursor: pointer;
-}
 
 #nav-icon1 span {
   display: block;
