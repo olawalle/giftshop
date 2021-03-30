@@ -2,6 +2,6 @@
 /*              /index.html     200
 ​
 # for the rest
-/about/*        /verify.html     200
-/contact/*      /giftcards.html   200
-/contact/*      /redeem.html   200
+/verify/*        /verify.html     200
+/giftcards/*      /giftcards.html   200
+/redeem/*      /redeem.html   200
