@@ -35,12 +35,12 @@ var app = new Vue({
       })
         .then((res) => {
           let data = this.getQueryStringParams(res.data.data);
-          if (res.data.data.includes("kryptonance")) {
-            window.open(res.data.data, "_self");
-            return;
-          }
-          this.verified = true;
-          this.validateCard(data);
+          // if (res.data.data.includes("kryptonance")) {
+          window.open(res.data.data, "_self");
+          // return;
+          // }
+          // this.verified = true;
+          // this.validateCard(data);
         })
         .catch((err) => {
           console.log({ err });
