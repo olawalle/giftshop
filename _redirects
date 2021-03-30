@@ -1,0 +1,7 @@
+# for root
+/*              /index.html     200
+​
+# for the rest
+/about/*        /verify.html     200
+/contact/*      /giftcards.html   200
+/contact/*      /redeem.html   200
