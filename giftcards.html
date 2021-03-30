@@ -92,77 +92,95 @@
         role="dialog"
         aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true"
+        ref="modal"
       >
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-body" style="padding: 30px">
-              <p class="thick">Create card</p>
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label mb-0"
-                  >Name</label
-                >
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  id="exampleFormControlInput1"
-                  placeholder=""
-                  v-model="newCardDetails.senderName"
-                />
-
-                <label for="exampleFormControlInput1" class="form-label mb-0"
-                  >Email address</label
-                >
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  id="exampleFormControlInput1"
-                  placeholder=""
-                  v-model="newCardDetails.senderEmail"
-                />
-
-                <label for="exampleFormControlInput1" class="form-label mb-0"
-                  >Receiver's name</label
-                >
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  id="exampleFormControlInput1"
-                  placeholder=""
-                  v-model="newCardDetails.receiverName"
-                />
-
-                <label for="exampleFormControlInput1" class="form-label mb-0"
-                  >Amount</label
-                >
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  id="exampleFormControlInput1"
-                  placeholder=""
-                  v-model="newCardDetails.amount"
-                />
-
-                <label for="exampleFormControlInput1" class="form-label mb-0"
-                  >Currency</label
-                >
-                <select
-                  class="form-control form-select"
-                  aria-label="Default select example"
-                  v-model="newCardDetails.cardCurrency"
-                >
-                  <option selected>Open this select menu</option>
-                  <option value="NGN">NGN</option>
-                  <option value="USD">USD</option>
-                </select>
-              </div>
+            <div
+              v-if="fetchingCardInfo"
+              style="text-align: center; padding: 100px"
+            >
+              <img src="./assets/Jumping ball.gif" alt="" />
+              <p>Loading card info</p>
             </div>
-            <div class="" style="text-align: right; padding: 0 30px 30px">
-              <button type="button" class="btn btn-Light" data-dismiss="modal">
-                Close
-              </button>
-              <button type="button" class="btn btn-dark" @click="createCard()">
-                Proceed
-              </button>
+            <div v-else>
+              <div class="modal-body" style="padding: 30px">
+                <p class="thick">Create card</p>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label mb-0"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control mb-3"
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                    v-model="newCardDetails.senderName"
+                  />
+
+                  <label for="exampleFormControlInput1" class="form-label mb-0"
+                    >Email address</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control mb-3"
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                    v-model="newCardDetails.senderEmail"
+                  />
+
+                  <label for="exampleFormControlInput1" class="form-label mb-0"
+                    >Receiver's name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control mb-3"
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                    v-model="newCardDetails.receiverName"
+                  />
+
+                  <label for="exampleFormControlInput1" class="form-label mb-0"
+                    >Amount</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control mb-3"
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                    v-model="newCardDetails.amount"
+                  />
+
+                  <label for="exampleFormControlInput1" class="form-label mb-0"
+                    >Currency</label
+                  >
+                  <select
+                    class="form-control form-select"
+                    aria-label="Default select example"
+                    v-model="newCardDetails.cardCurrency"
+                  >
+                    <option selected>Open this select menu</option>
+                    <option value="NGN">NGN</option>
+                    <option value="USD">USD</option>
+                  </select>
+                </div>
+              </div>
+              <div class="" style="text-align: right; padding: 0 30px 30px">
+                <button
+                  type="button"
+                  class="btn btn-Light"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-dark"
+                  @click="createCard()"
+                >
+                  Proceed
+                </button>
+              </div>
             </div>
           </div>
         </div>

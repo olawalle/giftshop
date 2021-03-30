@@ -4,6 +4,7 @@ var app = new Vue({
     message: "Hello Vue!",
     items: [1, 2, 3],
     toggle: false,
+    fetchingCardInfo: true,
     newCardDetails: {
       receiverEmail: "olawalle94@gmail.com",
       receiverName: "Sam smith",
@@ -15,6 +16,16 @@ var app = new Vue({
     },
   },
   computed: {},
+  mounted() {
+    let ref = window.location.search
+      ? window.location.search.replace("?", "").split("=")[1]
+      : null;
+    console.log(this.$refs);
+    if (ref) {
+      $("#exampleModalCenter").modal("show");
+      this.getCardInfo(ref);
+    }
+  },
   methods: {
     pickCardType(e) {
       console.log(e);
@@ -41,6 +52,7 @@ var app = new Vue({
         });
     },
     getCardInfo(ref) {
+      this.fetchingCardInfo = true;
       axios({
         method: "get",
         url: `https://api.giftshop.africa/v1/customer/giftcards/giftcard/view/${ref}`,
@@ -52,6 +64,7 @@ var app = new Vue({
         .catch((err) => {
           console.log(err);
         });
+      // .finally(() => (this.fetchingCardInfo = false));
     },
   },
 });
