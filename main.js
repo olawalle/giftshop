@@ -5,6 +5,11 @@ var app = new Vue({
     items: [1, 2, 3],
     toggle: false,
     fetchingCardInfo: true,
+    canActivate: false,
+    creatingCard: false,
+    amount: "",
+    url: "",
+    cardCode: "",
     newCardDetails: {
       receiverEmail: "olawalle94@gmail.com",
       receiverName: "Sam smith",
@@ -20,7 +25,6 @@ var app = new Vue({
     let ref = window.location.search
       ? window.location.search.replace("?", "").split("=")[1]
       : null;
-    console.log(this.$refs);
     if (ref) {
       $("#exampleModalCenter").modal("show");
       this.getCardInfo(ref);
@@ -28,7 +32,7 @@ var app = new Vue({
   },
   methods: {
     pickCardType(e) {
-      console.log(e);
+      this.creatingCard = true;
     },
     createCard() {
       let data = {
@@ -36,7 +40,6 @@ var app = new Vue({
         callbackUrl: `${window.location}`,
         // receiverEmail: "olawalle94@gmail.com",
       };
-      console.log(data);
       axios({
         method: "post",
         url:
@@ -44,7 +47,6 @@ var app = new Vue({
         data,
       })
         .then((res) => {
-          console.log(res);
           this.getCardInfo(res.data.data.cardReference);
         })
         .catch((err) => {
@@ -58,13 +60,20 @@ var app = new Vue({
         url: `https://api.giftshop.africa/v1/customer/giftcards/giftcard/view/${ref}`,
       })
         .then((res) => {
-          console.log(res);
-          window.open(res.data.data.paymentUrl, "_self");
+          this.url = res.data.data.paymentUrl;
+          this.amount = res.data.data.amount;
+          this.cardCode = res.data.data.cardCode
+            .replace(/\W/gi, "")
+            .replace(/(.{4})/g, "$1 ");
+          this.canActivate = true;
         })
         .catch((err) => {
           console.log(err);
         });
       // .finally(() => (this.fetchingCardInfo = false));
+    },
+    activateCard() {
+      window.open(this.url, "_self");
     },
   },
 });

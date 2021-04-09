@@ -25,6 +25,11 @@ var app = new Vue({
     let trxref = this.getQueryStringParams(window.location.search).reference;
     if (trxref) {
       this.activateCard(trxref);
+    } else if (this.getQueryStringParams(window.location.search).cardCode) {
+      this.formInfo = {
+        ...this.formInfo,
+        ...this.getQueryStringParams(window.location.search),
+      };
     }
   },
   methods: {
@@ -86,9 +91,7 @@ var app = new Vue({
         },
       })
         .then((res) => {
-          console.log(res);
           this.formInfo.account_name = res.data.AccountName;
-          console.log(this.formInfo.account_name);
           this.verifiedBank = true;
         })
         .catch((err) => console.log(err))
@@ -101,7 +104,6 @@ var app = new Vue({
         url: "https://api.production.cryptonance.io/api/wallet-banks",
       })
         .then((res) => {
-          console.log(res);
           this.banks = res.data;
         })
         .catch((err) => console.log(err));

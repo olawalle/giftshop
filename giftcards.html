@@ -71,7 +71,7 @@
               class="giftcard"
               data-toggle="modal"
               data-target="#exampleModalCenter"
-              @click="pickCardType('lol')"
+              @click="pickCardType()"
             >
               <img
                 src="./assets/old-apple-store-gift-cards-landing-202006.png"
@@ -97,13 +97,32 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div
-              v-if="fetchingCardInfo"
+              v-if="fetchingCardInfo && !canActivate"
               style="text-align: center; padding: 100px"
             >
               <img src="./assets/Jumping ball.gif" alt="" />
               <p>Loading card info</p>
             </div>
-            <div v-else>
+
+            <div v-if="fetchingCardInfo && canActivate" class="credit-card">
+              <div class="overlay"></div>
+              <p class="price">₦{{amount}}</p>
+              <p class="main-text">{{cardCode}}</p>
+            </div>
+            <div
+              v-if="canActivate"
+              style="text-align: right; padding: 0 30px 30px"
+            >
+              <button
+                type="button"
+                class="btn btn-dark"
+                @click="activateCard()"
+              >
+                Activate card
+              </button>
+            </div>
+
+            <div v-if="creatingCard">
               <div class="modal-body" style="padding: 30px">
                 <p class="thick">Create card</p>
                 <div class="mb-3">
