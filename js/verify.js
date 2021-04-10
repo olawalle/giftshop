@@ -18,6 +18,8 @@ var app = new Vue({
     banks: [],
     verifiedBank: false,
     loading: false,
+    errorMsg: "",
+    redemptionDone: false,
   },
   computed: {},
   mounted() {
@@ -81,6 +83,7 @@ var app = new Vue({
     },
 
     verifyAcctNo() {
+      this.errorMsg = "";
       this.loading = true;
       axios({
         method: "post",
@@ -94,7 +97,10 @@ var app = new Vue({
           this.formInfo.account_name = res.data.AccountName;
           this.verifiedBank = true;
         })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+          this.errorMsg =
+            "An error occured. Please confirm the account number and try again";
+        })
         .finally(() => (this.loading = false));
     },
 
@@ -110,6 +116,7 @@ var app = new Vue({
     },
 
     redeemCard() {
+      this.errorMsg = "";
       let data = {
         ...this.formInfo,
       };
@@ -121,10 +128,13 @@ var app = new Vue({
         data,
       })
         .then((res) => {
-          console.log(res);
+          this.redemptionDone = true;
         })
         .catch((err) => {
-          console.log(err);
+          this.redemptionDone = false;
+          this.errorMsg = err.response
+            ? err.response.data.message
+            : "An error occured. Please try again";
         })
         .finally(() => (this.loading = false));
     },

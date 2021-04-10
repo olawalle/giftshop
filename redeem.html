@@ -59,8 +59,17 @@
         </ul>
       </nav>
      
+
       
-      <div class="redeem shadow">
+      <div class="redeem shadow" v-if="redemptionDone" style="text-align: center;">
+        <img src="./assets/checked copy.svg" style="width: 200px;
+        margin: 30px;" alt="">
+        <p style="margin-top: 30px">
+          Your card redemption request is completed. Thank you for your partronage
+        </p>
+      </div>
+      
+      <div class="redeem shadow" v-else>
         <p class="thick">Redeem card</p>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label mb-0"
@@ -129,16 +138,20 @@
           ">{{formInfo.account_name}}</p>
 
         </div>
+
+        <p v-if="errorMsg" style="color: red; font-size: 14px; margin-top: -25px;">
+          {{errorMsg}}
+        </p>
         <div class="btns">
-        <button type="button" class="btn btn-Light" data-dismiss="modal">
-          Close
-        </button>
-        <button type="button" :disabled="loading" class="btn btn-dark" @click="verifiedBank ? redeemCard() : verifyAcctNo()">
-          <img src="./assets/loading.svg" class="rotate" v-if='loading' style="width: 15px;" alt="">
-          <span v-else>
-            {{verifiedBank ? 'Redeem' : 'Verify account'}}
-          </span>
-        </button>
+          <button type="button" class="btn btn-Light" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" :disabled="loading" class="btn btn-dark" @click="verifiedBank ? redeemCard() : verifyAcctNo()">
+            <img src="./assets/loading.svg" class="rotate" v-if='loading' style="width: 15px;" alt="">
+            <span v-else>
+              {{verifiedBank ? 'Redeem' : 'Verify account'}}
+            </span>
+          </button>
         </div>
       </div>
     </div>
