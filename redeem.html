@@ -114,7 +114,7 @@
             v-model="formInfo.bank_code"
           >
             <option selected>Open this select menu</option>
-            <option :value="bank.BankCode" v-for="bank in banks" :key="bank.BankSortCode">
+            <option :value="bank.bankCode" v-for="bank in banks" :key="bank.bankCode">
               {{bank.bankName}}
             </option>
           </select>
