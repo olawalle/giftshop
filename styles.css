@@ -27,6 +27,13 @@ nav {
   width: 100%;
 }
 
+.form-control {
+  color: #555658 !important;
+  height: 50px !important;
+  border-radius: 6px !important;
+  font-size: 16px !important;
+}
+
 .logo {
   width: 50px;
   height: 50px;
